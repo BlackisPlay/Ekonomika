@@ -8,12 +8,21 @@ body{
     left: 0;
     top: 0;
     position: fixed;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-size: cover;
     transition: 1.5s cubic-bezier(0.15, 0, 0, 1);
     transform: translateY(100px);
     opacity: 0.9;
+    margin: 0;
+}
+
+#backgroundFade{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(21, 21, 21);
+    opacity: 0;
 }
 
 #cover{
@@ -46,10 +55,11 @@ body{
 }
 
 #hlava{
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     top: 0;
-    position: absolute;
+    position: relative;
+    margin: 0;
 }
 
 #sign{
@@ -104,22 +114,22 @@ body{
 #nadpis{
     font-style: italic;
     transition: 0.8s;
-    letter-spacing: 10px;
+    letter-spacing: 15px;
     color: white;
     font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 500;
-    font-size: 90px;
+    font-weight: 400;
+    font-size: 110px;
     position: absolute;
-    top: 230px;
+    bottom: 350px;
     left: 50px;
     opacity: 0;
     transform: translateY(100px);
-    line-height: 70px;
+    line-height: 90px;
 }
 
 #nadpisPodtext{
     font-size: 20px;
-    top: 500px;
+    bottom: 200px;
     position: absolute;
     color: white;
     font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
@@ -161,11 +171,11 @@ body{
 }
 
 #vyzvy{
-    width: 400px;
+    width: 500px;
     height: 300px;
     right: 5vw;
     position: absolute;
-    top: 200px;
+    bottom: 400px;
 }
 
 #line1{
@@ -184,7 +194,7 @@ body{
     font-style: italic;
     font-weight: 500;
     margin-left: 10px;
-    font-size: 30px;
+    font-size: 40px;
     margin-top: 20px;
     margin-bottom: 20px;
     opacity: 0;
@@ -197,7 +207,7 @@ body{
     font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 300;
     margin-left: 10px;
-    font-size: 15px;
+    font-size: 20px;
     margin-top: 5px;
 }
 
@@ -234,14 +244,14 @@ body{
 #checkboxes{
     position: absolute;
     right: 0;
-    top: 80px;
+    top: 95px;
     width: 15px;
-    height: 150px;
+    height: 190px;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
-    grid-row-gap: 18px;
+    grid-row-gap: 29px;
 }
 
 #checkboxes div{
@@ -254,13 +264,13 @@ body{
 
 #premium,#regular{
     position: absolute;
-    bottom: -80px;
+    bottom: -200px;
     border-radius: 20px;
-    height: 40px;
-    width: 150px;
+    height: 50px;
+    width: 170px;
     font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 25px;
     letter-spacing: 3px;
     border: solid white 2px;
     transition: 0.5s;
@@ -275,7 +285,7 @@ body{
 }
 
 #regular{
-    left: 220px;
+    left: 250px;
     color: black;
 }
 
@@ -289,4 +299,53 @@ body{
     color: white;
     background-color: rgb(40, 40, 40);
     letter-spacing: 5px;
+}
+
+#gallery{
+    position: relative;
+    width: 100%;
+    height: 800px;
+}
+
+#slideTrack,#slideTrack2{
+    overflow: hidden;
+    width: auto;
+    height: 200px;
+    display: grid;
+    grid-template-columns: repeat(16, 350px);
+    grid-template-rows: 200px;
+    grid-column-gap: 30px;
+    grid-row-gap: 0px;
+}
+
+#slideTrack img{
+    width: 100%;
+    height: 100%;
+    animation: imgMovingLeft infinite 40s linear;
+}
+
+@keyframes imgMovingLeft {
+    0%{
+        transform: translateX(0px);
+    }100%{
+        transform: translateX(-3040px);
+    }
+}
+
+#slideTrack2{
+    margin-top: 30px;
+}
+
+#slideTrack2 img{
+    width: 100%;
+    height: 100%;
+    animation: imgMovingRight infinite 40s linear;
+}
+
+@keyframes imgMovingRight {
+    0%{
+        transform: translateX(-3040px);
+    }100%{
+        transform: translateX(0px);
+    }
 }
