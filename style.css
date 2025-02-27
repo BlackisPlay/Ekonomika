@@ -1,6 +1,7 @@
 body{
     margin: 0;
     background-color: black;
+    overflow-x: hidden;
 }
 
 ::selection{
@@ -107,6 +108,7 @@ body{
     transition: 0.2s;
     transform: translateY(50px);
     opacity: 0;
+    z-index: 3;
 }
 
 #menu:hover{
@@ -162,7 +164,7 @@ body{
     width: 0%;
     opacity: 0.5;
     left: 0;
-    transition: 1s;
+    transition: 2.5s cubic-bezier(0.1, 0, 0, 1);
 }
 
 #kulin{
@@ -190,7 +192,7 @@ body{
     width: 0%;
     opacity: 0.5;
     left: 0;
-    transition: 1s;
+    transition: 2.5s cubic-bezier(0.1, 0, 0, 1);
 }
 
 #vyzvyNadpis{
@@ -270,7 +272,7 @@ body{
 #premium,#regular{
     position: absolute;
     bottom: -200px;
-    border-radius: 20px;
+    border-radius: 30px;
     height: 50px;
     width: 170px;
     font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
@@ -309,7 +311,7 @@ body{
 #gallery{
     position: relative;
     width: 100%;
-    height: 800px;
+    height: 500px;
 }
 
 #slideTrack,#slideTrack2{
@@ -321,6 +323,8 @@ body{
     grid-template-rows: 200px;
     grid-column-gap: 30px;
     grid-row-gap: 0px;
+    opacity: 0;
+    transition: 1s;
 }
 
 #slideTrack img{
@@ -339,6 +343,11 @@ body{
 
 #slideTrack2{
     margin-top: 30px;
+    transform: translateX(-300px);
+}
+
+#slideTrack{
+    transform: translateX(300px);
 }
 
 #slideTrack2 img{
@@ -353,4 +362,54 @@ body{
     }100%{
         transform: translateX(0px);
     }
+}
+
+#line2{
+    position: absolute;
+    bottom: 0;
+    width: 0%;
+    height: 1px;
+    left: 2.5%;
+    opacity: 0.5;
+    background-color: white;
+    transition: 1s;
+    transition: 2.5s cubic-bezier(0.1, 0, 0, 1);
+}
+
+#info{
+    width: 100%;
+    position: relative;
+    height: 1500px;
+}
+
+#profiles{
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 100%;
+    height: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#loader{
+    z-index: 2;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 5px;
+    width: 0%;
+    background-color: yellow;
+}
+
+#realMenu{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 40%;
+    background-color: rgb(21, 21, 21);
+    transition: 1s cubic-bezier(0.1, 0, 0, 1);
 }
