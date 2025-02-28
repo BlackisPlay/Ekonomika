@@ -571,7 +571,7 @@ body{
     top: 50%;
     transform: translateY(-50%) translateX(600px) rotate(90deg);
     overflow: hidden;
-    background-image: url(profiles/sulin.jpg);
+    background-image: url(profiles/bajdinec.jpg);
     background-size: 90%;
     background-position: 20px 10px;
     transition: 1s cubic-bezier(0.1, 0, 0, 1);
