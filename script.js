@@ -163,7 +163,7 @@ addEventListener("DOMContentLoaded", () => {
 
         loader.style.width = (window.scrollY/(document.body.scrollHeight - window.innerHeight))*100 + "%";
         let line4 = document.getElementById("line4");
-        if(isElementVisible(document.getElementById("pata"), 200)){
+        if(isElementVisible(document.getElementById("pata"), 100)){
             line4.style.width = "95%";
             document.getElementById("koniec").style.opacity = 1;
             document.getElementById("koniec").style.top = "40%";
