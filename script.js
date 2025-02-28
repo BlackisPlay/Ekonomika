@@ -2,13 +2,15 @@ addEventListener("DOMContentLoaded", () => {
     let line0 = document.getElementById("line0");
     let line1 = document.getElementById("line1");
     let line2 = document.getElementById("line2");
-    let realMenu = document.getElementById("realMenu");
     let previousScroll;
     let slideTrack = document.getElementById("slideTrack");
     let slideTrack2 = document.getElementById("slideTrack2");
 
     let loader = document.getElementById("loader");
     let posterPos = 0;
+
+    const nadpisy = document.querySelectorAll('.nadpisy');
+    const popisy = document.querySelectorAll(".popisy");
 
     let cover = document.getElementById("cover");
     let background = document.getElementById("background");
@@ -89,33 +91,77 @@ addEventListener("DOMContentLoaded", () => {
     let fadeOpacity = 0;
       window.addEventListener("scroll", () => {
         
-        if (isElementVisible(line2)) {
+        if (isElementVisible(line2, 100)) {
           line2.style.width = "95%";
-          document.getElementById("onas").style.opacity = 1;
-          document.getElementById("onas").style.transform = "translateX(0px)";
+          document.getElementById("onastext").style.opacity = 1;
+          document.getElementById("onastext").style.transform = "translateX(0px)";
         }
-        if (isElementVisible(slideTrack)) {
+        if (isElementVisible(slideTrack, 200)) {
             slideTrack.style.opacity = 1;
             slideTrack.style.transform = "translateX(0px)";
         }
-        if (isElementVisible(slideTrack2)) {
+        if (isElementVisible(slideTrack2, 200)) {
             slideTrack2.style.opacity = 1;
             slideTrack2.style.transform = "translateX(0px)";
         }
 
-        if (isPosterVisible(poster)){
+        if (isElementVisible(poster, 300)){
             posterPos = posterPos + (window.scrollY - previousScroll);
             poster.style.transform = "translateY(" + posterPos*(-0.1) + "px)";
+            plagat.style.transform = "translateY(" + posterPos*(-0.15) + "px)";
+            
+        }
+
+        if(isElementVisible(poster, 300)){
+            document.getElementById("posterCover").style.opacity = 0;
         }
         previousScroll = window.scrollY;
 
+        if(isElementVisible(document.getElementById("yapping"), 400)){
+            nadpisy.forEach((nadpis, index) => {
+                setTimeout(() => {
+                    nadpis.style.transform = "translateY(" + posterPos*(-0.1) + "px)";
+                    nadpis.style.opacity = 1;
+                    nadpis.style.transform = "translateX(0px)";
+                }, index * 200);
+            });
+            popisy.forEach((popis, index) => {
+                setTimeout(() => {
+                    popis.style.opacity = 1;
+                    popis.style.transform = "translateX(0px)";
+                }, index * 250);
+            });
+        }
+
+        if(isElementVisible(document.getElementById("team"), 100)){
+            document.getElementById("line3").style.width = "95%";
+            document.getElementById("teamtext").style.opacity = 1;
+            document.getElementById("teamtext").style.transform = "translateY(0px)";
+        }
+
+        if(isElementVisible(document.getElementById("sulin"), 200)){
+            document.getElementById("ksichtSulin").style.transform = "translateY(-50%) translateX(0px) rotate(0deg)";
+            document.getElementById("ksichtSulin").style.filter = "blur(0px)";
+        }
+
+        if(isElementVisible(document.getElementById("delfin"), 200)){
+            document.getElementById("ksichtDelfin").style.transform = "translateY(-50%) translateX(0px) rotate(0deg)";
+            document.getElementById("ksichtDelfin").style.filter = "blur(0px)";
+        }
+
+        if(isElementVisible(document.getElementById("bajdinec"), 200)){
+            document.getElementById("ksichtBajdinec").style.transform = "translateY(-50%) translateX(0px) rotate(0deg)";
+            document.getElementById("ksichtBajdinec").style.filter = "blur(0px)";
+        }
+
+        if(isElementVisible(document.getElementById("bartuk"), 200)){
+            document.getElementById("ksichtBartuk").style.transform = "translateY(-50%) translateX(0px) rotate(0deg)";
+            document.getElementById("ksichtBartuk").style.filter = "blur(0px)";
+        }
 
         loader.style.width = (window.scrollY/(document.body.scrollHeight - window.innerHeight))*100 + "%";
 
         const element = document.querySelector("#profiles");
-        if (isElementInCenter(element)) {
-            
-        }
 
         const backFade = document.getElementById("backgroundFade");
         fadeOpacity = window.scrollY;
@@ -132,33 +178,12 @@ document.getElementById("menu").addEventListener("click", () => {
 });
 
 
-function isElementVisible(el) {
+function isElementVisible(el, delay) {
     const rect = el.getBoundingClientRect();
-    return rect.bottom + 100 <= (window.innerHeight || document.documentElement.clientHeight);
+    return rect.top + delay <= (window.innerHeight || document.documentElement.clientHeight);
 }
 
-function isPosterVisible(el) {
+function isPosterVisible(el, delay) {
     const rect = el.getBoundingClientRect();
-    return rect.top <= (window.innerHeight || document.documentElement.clientHeight);
+    return rect.top + delay <= (window.innerHeight || document.documentElement.clientHeight);
 }
-
-function isElementInCenter(el) {
-    if (!el) return false; // Prevent errors if element is null
-
-    const rect = el.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-
-    // Calculate the vertical center of the viewport
-    const viewportCenter = viewportHeight / 2;
-
-    // Calculate the element's center
-    const elementCenter = rect.top + rect.height / 2;
-
-    // Check if the element's center is near the viewport's center
-    return Math.abs(viewportCenter - elementCenter - 200) < rect.height / 2;
-}
-
-// Example usage: check when scrolling
-window.addEventListener("scroll", () => {
-
-});
