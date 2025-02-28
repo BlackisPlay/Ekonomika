@@ -12,6 +12,8 @@ addEventListener("DOMContentLoaded", () => {
     const nadpisy = document.querySelectorAll('.nadpisy');
     const popisy = document.querySelectorAll(".popisy");
 
+    let imagine = document.getElementById("imagine");
+
     let cover = document.getElementById("cover");
     let background = document.getElementById("background");
     let nadpis = document.getElementById("nadpis");
@@ -108,7 +110,7 @@ addEventListener("DOMContentLoaded", () => {
         if (isElementVisible(poster, 300)){
             posterPos = posterPos + (window.scrollY - previousScroll);
             poster.style.transform = "translateY(" + posterPos*(-0.1) + "px)";
-            plagat.style.transform = "translateY(" + posterPos*(-0.15) + "px)";
+            plagat.style.transform = "translateY(" + posterPos*(-0.12) + "px)";
             
         }
 
@@ -160,7 +162,13 @@ addEventListener("DOMContentLoaded", () => {
         }
 
         loader.style.width = (window.scrollY/(document.body.scrollHeight - window.innerHeight))*100 + "%";
-
+        let line4 = document.getElementById("line4");
+        if(isElementVisible(document.getElementById("pata"), 200)){
+            line4.style.width = "95%";
+            document.getElementById("koniec").style.opacity = 1;
+            document.getElementById("koniec").style.top = "40%";
+            document.getElementById("koniec").style.letterSpacing = "5px";
+        }
         const element = document.querySelector("#profiles");
 
         const backFade = document.getElementById("backgroundFade");
@@ -175,6 +183,7 @@ realMenu.style.transform = "translateY(-100%)";
 document.getElementById("menu").addEventListener("click", () => {
     realMenu.style.transform = realMenu.style.transform == "translateY(-100%)" ? "translateY(0%)" : "translateY(-100%)";
     document.getElementById("menu").style.transform = document.getElementById("menu").style.transform == "rotate(90deg)" ? "rotate(0deg)" : "rotate(90deg)";
+    imagine.style.marginTop = imagine.style.marginTop == "20px" ? "200px" : "20px";
 });
 
 
