@@ -612,7 +612,7 @@ body{
     overflow: hidden;
     background-image: url(profiles/bartik.png);
     background-size: 90%;
-    background-position: 20px 10px;
+    background-position: 20px -50px;
     transition: 1s cubic-bezier(0.1, 0, 0, 1);
     filter: blur(20px);
 }
