@@ -3,11 +3,12 @@ addEventListener("DOMContentLoaded", () => {
     let line1 = document.getElementById("line1");
     let line2 = document.getElementById("line2");
     let realMenu = document.getElementById("realMenu");
-
+    let previousScroll;
     let slideTrack = document.getElementById("slideTrack");
     let slideTrack2 = document.getElementById("slideTrack2");
 
     let loader = document.getElementById("loader");
+    let posterPos = 0;
 
     let cover = document.getElementById("cover");
     let background = document.getElementById("background");
@@ -17,6 +18,9 @@ addEventListener("DOMContentLoaded", () => {
     let vyzvyNadpis = document.getElementById("vyzvyNadpis");
     let premium = document.getElementById("premium");
     let regular = document.getElementById("regular");
+
+    let poster = document.getElementById("poster");
+    let plagat = document.getElementById("plagat");
 
     setTimeout(() => {
         line1.style.width = "100%";
@@ -82,9 +86,13 @@ addEventListener("DOMContentLoaded", () => {
         nadpis.style.opacity = 1;
     }, 600);
       
+    let fadeOpacity = 0;
       window.addEventListener("scroll", () => {
+        
         if (isElementVisible(line2)) {
           line2.style.width = "95%";
+          document.getElementById("onas").style.opacity = 1;
+          document.getElementById("onas").style.transform = "translateX(0px)";
         }
         if (isElementVisible(slideTrack)) {
             slideTrack.style.opacity = 1;
@@ -94,13 +102,27 @@ addEventListener("DOMContentLoaded", () => {
             slideTrack2.style.opacity = 1;
             slideTrack2.style.transform = "translateX(0px)";
         }
-        
+
+        if (isPosterVisible(poster)){
+            posterPos = posterPos + (window.scrollY - previousScroll);
+            poster.style.transform = "translateY(" + posterPos*(-0.1) + "px)";
+        }
+        previousScroll = window.scrollY;
+
+
         loader.style.width = (window.scrollY/(document.body.scrollHeight - window.innerHeight))*100 + "%";
 
         const element = document.querySelector("#profiles");
         if (isElementInCenter(element)) {
             
         }
+
+        const backFade = document.getElementById("backgroundFade");
+        fadeOpacity = window.scrollY;
+        if(fadeOpacity < 400)
+            backFade.style.opacity = fadeOpacity/400;
+        else
+            backFade.style.opacity = 1;
       });
 })
 realMenu.style.transform = "translateY(-100%)";
@@ -109,22 +131,16 @@ document.getElementById("menu").addEventListener("click", () => {
     document.getElementById("menu").style.transform = document.getElementById("menu").style.transform == "rotate(90deg)" ? "rotate(0deg)" : "rotate(90deg)";
 });
 
-let fadeOpacity = 0;
-
-addEventListener("scroll", () => {
-    const backFade = document.getElementById("backgroundFade");
-    fadeOpacity = window.scrollY;
-    if(fadeOpacity < 400)
-        backFade.style.opacity = fadeOpacity/400;
-    else
-        backFade.style.opacity = 1;
-})
 
 function isElementVisible(el) {
     const rect = el.getBoundingClientRect();
     return rect.bottom + 100 <= (window.innerHeight || document.documentElement.clientHeight);
-  }
+}
 
+function isPosterVisible(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.top <= (window.innerHeight || document.documentElement.clientHeight);
+}
 
 function isElementInCenter(el) {
     if (!el) return false; // Prevent errors if element is null
