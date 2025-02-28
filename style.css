@@ -40,7 +40,7 @@ body{
     background-color: rgb(21, 21, 21);
     transition: 1.5s cubic-bezier(0.1, 0, 0, 1);
     transform: translateY(0px);
-    z-index: 1;
+    z-index: 4;
 }
 
 #logo{
@@ -378,7 +378,7 @@ body{
 }
 
 #loader{
-    z-index: 2;
+    z-index: 5;
     position: fixed;
     left: 0;
     top: 0;
@@ -394,6 +394,27 @@ body{
     height: 40%;
     background-color: rgb(21, 21, 21);
     transition: 1s cubic-bezier(0.1, 0, 0, 1);
+    overflow: hidden;
+}
+
+#realMenu h2{
+    color: white;
+    font-family: "Orbitron", Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 50px;
+    margin-left: 20px;
+    margin-top: 20px;
+    transition: 0.5s cubic-bezier(0.1, 0, 0.2, 1);
+}
+
+#realMenu p{
+    color: white;
+    font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    margin-left: 50px;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+    margin-top: 60px;
+    transition: 0.5s cubic-bezier(0.1, 0, 0.2, 1);
 }
 
 #info{
@@ -528,6 +549,7 @@ body{
 
 #sulin,#delfin,#bajdinec,#bartuk{
     position: relative;
+    overflow: hidden;
 }
 
 #ksichtSulin{
@@ -636,4 +658,54 @@ body{
     font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
     font-style: italic;
     font-size: 20px;
+}
+
+#pata{
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+#line4{
+    position: absolute;
+    top: 0;
+    width: 0%;
+    height: 1px;
+    left: 2.5%;
+    background-color: white;
+    opacity: 0.5;
+    transition: 2.5s cubic-bezier(0.1, 0, 0, 1);
+}
+
+#koniec{
+    position: absolute;
+    left: 50%;
+    top: 120%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: 1s cubic-bezier(0.1, 0, 0, 1);
+}
+
+/* Hide the scrollbar while keeping scrolling enabled */
+::-webkit-scrollbar {
+    display: none; /* Completely hides the scrollbar */
+}
+
+/* Ensure the element can still be scrolled */
+body {
+    overflow: auto; /* Enables scrolling */
+}
+
+/* Hide the scrollbar while allowing scrolling */
+* {
+    scrollbar-width: none; /* Firefox-specific */
+}
+
+body {
+    -ms-overflow-style: none; /* Hides scrollbar in IE/Edge */
 }
